@@ -67,7 +67,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -81,10 +81,14 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Learn',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Introduction',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Installation',
                 to: '/docs/intro',
               },
             ],
@@ -93,17 +97,17 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Discussions',
+                href: 'https://github.com/osalvador/ReplicaDB/discussions',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Issues',
+                href: 'https://github.com/osalvador/ReplicaDB/issues',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                label: 'Feature Requests',
+                href: 'https://github.com/osalvador/ReplicaDB/discussions/categories/ideas',
+              }              
             ],
           },
           {
