@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 
-## 1. Introduction
+# Introduction
 
 ReplicaDB is primarily a command line, portable and cross-platform tool for data replication between a source and a sink databases. Its main objective is performance, implementing all the specific DataBase engine techniques to achieve the best performance for each of them, either as a source or as a sink.
 
@@ -11,9 +11,8 @@ ReplicaDB follows the Convention over configuration design, so the user will int
 
 ## 2. Basic Usage
 
-With ReplicaDB, you can _replicate_ data between relational databases and non-relational databases. The input to the replication process is a database table or custom query. ReplicaDB will read the source table row-by-row and the output of this replication process is q table in the sink database containing a copy of the source table. The replication process is performed in parallel.
+With ReplicaDB, you can _replicate_ data between relational databases and non-relational databases. The input to the replication process is a database table or custom query. ReplicaDB will read the source table row-by-row and the output of this replication process is a table in the sink database containing a copy of the source table. The replication process is performed in parallel.
 
-By default, ReplicaDB will truncate the sink table before populating it with data, unless `--sink-disable-truncate false` is indicated.
 
 ### 2.1 Replication Mode
 
@@ -22,10 +21,15 @@ ReplicaDB implements three replication modes: `complete`, `complete-atomic` and 
 
 #### Complete
 
-The `complete` mode makes a complete replica of the source table, of all its data, from source to sink. In `complete` mode, only` INSERT` is done in the sink table without worrying about the primary keys. ReplicaDB will perform the following actions on a `complete` replication:
+The `complete` mode makes a complete (full) replica of the source table, of all its data, from source to sink. In `complete` mode, only `INSERT` statement is done in the sink table without worrying about the primary keys. ReplicaDB will perform the following actions on a `complete` replication:
 
-  - Truncate the sink table with the `TRUNCATE TABLE` statement.
-  - Select and copy the data in parallel from the source table to the sink table.
+- Truncate the sink table with the `TRUNCATE TABLE` statement.
+- Select and copy the data in parallel from the source table to the sink table.
+
+:::tip
+By default, in `complete` mode the sink table is truncated. If you specify the `--sink-disable-truncate false` parameter, the sink table will not be truncated and you will only append data to the sink table.
+:::
+
 
 So data is **not** available in the Sink Table during the replication process.
 
